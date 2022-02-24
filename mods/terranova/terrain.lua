@@ -1,11 +1,13 @@
 minetest.register_node("terranova:soil", {
 	description = "Soil",
-	tiles = {"t.soil.png"}
+	tiles = {"t.soil.png"},
+	groups = {terrain_soft = 1}
 })
 
 minetest.register_node("terranova:permafrost", {
 	description = "Permafrost",
-	tiles = {"t.permafrost.png"}
+	tiles = {"t.permafrost.png"},
+	groups = {terrain_hard = 1}
 })
 
 minetest.register_node("terranova:crater", {

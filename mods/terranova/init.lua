@@ -22,6 +22,16 @@ minetest.register_item(":", {
 				times = {[1] = 0.20},
 				uses = 0,
 				maxlevel = 1,
+			},
+			terrain_soft = {
+				times = {[1] = 1.5},
+				uses = 0,
+				maxlevel = 1,
+			},
+			terrain_hard = {
+				times = {[1] = 3},
+				uses = 0,
+				maxlevel = 1,
 			}
 		}
 	},

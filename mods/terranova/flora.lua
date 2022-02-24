@@ -13,5 +13,7 @@ minetest.register_node("terranova:fern", {
 	paramtype = "light",
 	walkable = false,
 	pointable = false,
-	buildable_to = true
+	buildable_to = true,
+	groups = {attached_node = 1},
+	drop = ""
 })
