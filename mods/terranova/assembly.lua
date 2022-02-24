@@ -1,7 +1,7 @@
 minetest.register_craftitem("terranova:fabric", {
 	description = "Natural Fabric",
 	inventory_image = "t.fabric.png",
-	wield_scale = {x = 1, y = 1, z = 8}
+	wield_scale = {x = 1, y = 1, z = 10}
 })
 
 minetest.register_craft({
