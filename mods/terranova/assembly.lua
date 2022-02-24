@@ -1,3 +1,15 @@
+minetest.register_craftiem("terranova:fabric", {
+	description = "Natural Fabric",
+	inventory_image = "t.fabric.png"
+})
+
+minetest.register_craft({
+	output = "terranova:fabric",
+	recipe = {{"terranova:moss", "terranova:moss", "terranova:moss"}}
+})
+
+
+
 minetest.register_craftitem("terranova:limestone_lump" , {
 	description = "Limestone",
 	inventory_image = "w.limestone.png",
