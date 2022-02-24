@@ -3,7 +3,6 @@ dofile(modpath.."/terrain.lua")
 dofile(modpath.."/assembly.lua")
 dofile(modpath.."/building.lua")
 dofile(modpath.."/flora.lua")
-dofile(modpath.."/gas.lua")
 dofile(modpath.."/nuclear.lua")
 
 minetest.register_item(":", {

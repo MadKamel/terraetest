@@ -1,4 +1,4 @@
-minetest.register_craftiem("terranova:fabric", {
+minetest.register_craftitem("terranova:fabric", {
 	description = "Natural Fabric",
 	inventory_image = "t.fabric.png"
 })
