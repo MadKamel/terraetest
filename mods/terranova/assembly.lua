@@ -11,32 +11,32 @@ minetest.register_craft({
 
 
 
-minetest.register_craftitem("terranova:limestone_lump" , {
+minetest.register_craftitem("terranova:limestone_lump", {
 	description = "Limestone",
 	inventory_image = "w.limestone.png",
 })
 
-minetest.register_craftitem("terranova:coal_lump" , {
+minetest.register_craftitem("terranova:coal_lump", {
 	description = "Coal",
 	inventory_image = "w.coal.png",
 })
 
-minetest.register_craftitem("terranova:magnetite_lump" , {
+minetest.register_craftitem("terranova:magnetite_lump", {
 	description = "Magnetite",
 	inventory_image = "w.magnetite.png",
 })
 
-minetest.register_craftitem("terranova:chalcocite_lump" , {
+minetest.register_craftitem("terranova:chalcocite_lump", {
 	description = "Chalcocite",
 	inventory_image = "w.chalcocite.png",
 })
 
-minetest.register_craftitem("terranova:galena_lump" , {
+minetest.register_craftitem("terranova:galena_lump", {
 	description = "Galena",
 	inventory_image = "w.galena.png",
 })
 
-minetest.register_craftitem("terranova:ivory_lump" , {
+minetest.register_craftitem("terranova:ivory_lump", {
 	description = "Ivory",
 	inventory_image = "w.ivory.png",
 })
@@ -66,20 +66,22 @@ minetest.register_craft({
 
 
 
-minetest.register_craftitem("terranova:iron_ingot" , {
+minetest.register_craftitem("terranova:iron_ingot", {
 	description = "Iron Ingot",
 	inventory_image = "t.iron_ingot.png",
 })
 
-minetest.register_craftitem("terranova:copper_ingot" , {
+minetest.register_craftitem("terranova:copper_ingot", {
 	description = "Copper Ingot",
 	inventory_image = "t.copper_ingot.png",
 })
 
-minetest.register_craftitem("terranova:lead_ingot" , {
+minetest.register_craftitem("terranova:lead_ingot", {
 	description = "Lead Ingot",
 	inventory_image = "t.lead_ingot.png",
 })
+
+
 
 minetest.register_craft({
 	output = "terranova:iron_rod 2",
@@ -111,17 +113,17 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craftitem("terranova:iron_rod" , {
+minetest.register_craftitem("terranova:iron_rod", {
 	description = "Iron Rod",
 	inventory_image = "t.iron_rod.png",
 })
 
-minetest.register_craftitem("terranova:iron_plate" , {
+minetest.register_craftitem("terranova:iron_plate", {
 	description = "Iron Plate",
 	inventory_image = "t.iron_plate.png",
 })
 
-minetest.register_craftitem("terranova:screw" , {
+minetest.register_craftitem("terranova:screw", {
 	description = "Screw",
 	inventory_image = "t.screw.png",
 	wield_image = "w.screw.png",
@@ -166,6 +168,8 @@ minetest.register_node("terranova:modular_iron_frame", {
 	},
 })
 
+
+
 minetest.register_craft({
 	output = "terranova:copper_coil",
 	recipe = {
@@ -173,10 +177,12 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craftitem("terranova:copper_coil" , {
+minetest.register_craftitem("terranova:copper_coil", {
 	description = "Copper Coil",
 	inventory_image = "t.copper_coil.png",
 })
+
+
 
 minetest.register_craft({
 	output = "terranova:lead_rod 2",
@@ -192,15 +198,31 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craftitem("terranova:lead_rod" , {
+minetest.register_craft({
+	output = "terranova:lead_pipe",
+	recipe = {
+		{"terranova:lead_plate", "terranova:lead_plate"},
+		{"terranova:lead_plate", "terranova:lead_plate"},
+		{"terranova:lead_plate", "terranova:lead_plate"}
+	}
+})
+
+minetest.register_craftitem("terranova:lead_rod", {
 	description = "Lead Rod",
 	inventory_image = "t.lead_rod.png",
 })
 
-minetest.register_craftitem("terranova:lead_plate" , {
+minetest.register_craftitem("terranova:lead_plate", {
 	description = "Lead Plate",
 	inventory_image = "t.lead_plate.png",
 })
+
+minetest.register_craftitem("terranova:lead_pipe", {
+	description = "Lead Pipe",
+	inventory_image = "t.lead_pipe.png",
+})
+
+
 
 minetest.register_craft({
 	output = "terranova:modular_lead_frame",
@@ -234,4 +256,20 @@ minetest.register_node("terranova:modular_lead_frame", {
 			{-0.3125, 0.3125, -0.5, 0.3125, 0.5, -0.3125}, -- NodeBox13
 		}
 	},
+})
+
+
+
+minetest.register_craft({
+	output = "terranova:stator",
+	recipe = {
+		{"terranova:copper_coil", "terranova:copper_coil", "terranova:copper_coil"},
+		{"terranova:copper_coil", "terranova:lead_plate", "tterranova:copper_coil"},
+		{"terranova:copper_coil", "terranova:copper_coil", "terranova:copper_coil"}
+	}
+})
+
+minetest.register_craftitem("terranova:stator", {
+	description = "Stator",
+	inventory_image = "t.stator.png",
 })
