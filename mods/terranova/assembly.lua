@@ -113,6 +113,8 @@ minetest.register_craft({
 	}
 })
 
+
+
 minetest.register_craftitem("terranova:iron_rod", {
 	description = "Iron Rod",
 	inventory_image = "t.iron_rod.png",
@@ -133,6 +135,8 @@ minetest.register_craftitem("terranova:bolted_iron_plate", {
 	description = "Bolted Iron Plate",
 	inventory_image = "t.bolted_iron_plate.png",
 })
+
+
 
 minetest.register_craft({
 	output = "terranova:modular_iron_frame",
@@ -207,6 +211,15 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = "terranova:rivet",
+	recipe = {
+		{"terranova:screw", "terranova:screw", "terranova:screw"},
+		{"terranova:screw", "terranova:lead_rod", "terranova:screw"},
+		{"terranova:screw", "terranova:screw", "terranova:screw"}
+	}
+})
+
 minetest.register_craftitem("terranova:lead_rod", {
 	description = "Lead Rod",
 	inventory_image = "t.lead_rod.png",
@@ -222,14 +235,20 @@ minetest.register_craftitem("terranova:lead_pipe", {
 	inventory_image = "t.lead_pipe.png",
 })
 
+minetest.register_craftitem("terranova:rivet", {
+	description = "Rivet",
+	inventory_image = "t.rivet.png",
+	wield_image = "w.rivet.png",
+})
+
 
 
 minetest.register_craft({
 	output = "terranova:modular_lead_frame",
 	recipe = {
-		{"terranova:screw", "terranova:lead_rod", "terranova:screw"},
-		{"terranova:lead_rod", "terranova:modular_iron_frame", "terranova:lead_rod"},
-		{"terranova:screw", "terranova:lead_rod", "terranova:screw"}
+		{"terranova:rivet", "terranova:lead_pipe", "terranova:rivet"},
+		{"terranova:lead_pipe", "terranova:modular_iron_frame", "terranova:lead_pipe"},
+		{"terranova:rivet", "terranova:lead_pipe", "terranova:rivet"}
 	}
 })
 
@@ -264,7 +283,7 @@ minetest.register_craft({
 	output = "terranova:stator",
 	recipe = {
 		{"terranova:copper_coil", "terranova:copper_coil", "terranova:copper_coil"},
-		{"terranova:copper_coil", "terranova:lead_plate", "tterranova:copper_coil"},
+		{"terranova:copper_coil", "terranova:lead_pipe", "terranova:copper_coil"},
 		{"terranova:copper_coil", "terranova:copper_coil", "terranova:copper_coil"}
 	}
 })
@@ -272,4 +291,32 @@ minetest.register_craft({
 minetest.register_craftitem("terranova:stator", {
 	description = "Stator",
 	inventory_image = "t.stator.png",
+})
+
+minetest.register_craft({
+	output = "terranova:rotor",
+	recipe = {
+		{"", "terranova:iron_rod", ""},
+		{"terranova:copper_coil", "terranova:iron_rod", "terranova:copper_coil"},
+		{"", "terranova:iron_rod", ""}
+	}
+})
+
+minetest.register_craftitem("terranova:rotor", {
+	description = "Rotor",
+	inventory_image = "t.rotor.png",
+})
+
+minetest.register_craft({
+	output = "terranova:motor",
+	recipe = {
+		{"terranova:bolted_iron_plate", "terranova:bolted_iron_plate", "terranova:bolted_iron_plate"},
+		{"terranova:rotor", "terranova:modular_iron_frame", "terranova:stator"},
+		{"terranova:iron_rod", "terranova:bolted_iron_plate", "terranova:iron_rod"}
+	}
+})
+
+minetest.register_craftitem("terranova:motor", {
+	description = "Motor",
+	inventory_image = "t.motor.png",
 })

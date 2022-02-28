@@ -10,6 +10,8 @@ minetest.register_node("terranova:f_iron", {
 	groups = {foundation = 1}
 })
 
+
+
 minetest.register_craft({
 	output = "terranova:f_iron 6",
 	recipe = {
@@ -25,5 +27,22 @@ minetest.register_craft({
 		{"terranova:iron_plate", "terranova:iron_plate", "terranova:iron_plate"},
 		{"terranova:limestone_lump", "terranova:limestone_lump", "terranova:limestone_lump"},
 		{"terranova:limestone_lump", "terranova:limestone_lump", "terranova:limestone_lump"}
+	}
+})
+
+
+
+minetest.register_node("terranova:storage_container", {
+	description = "Storage Container",
+	tiles = {"t.platform_iron.png", "t.platform_side_iron.png"},
+	groups = {foundation = 1}
+})
+
+minetest.register_craft({
+	output = "terranova:storage_container",
+	recipe = {
+		{"terranova:iron_plate", "terranova:iron_plate", "terranova:iron_plate"},
+		{"terranova:iron_rod", "", "terranova:iron_rod"},
+		{"terranova:iron_plate", "terranova:iron_plate", "terranova:iron_plate"}
 	}
 })
