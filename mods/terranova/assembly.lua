@@ -186,6 +186,18 @@ minetest.register_craftitem("terranova:copper_coil", {
 	inventory_image = "t.copper_coil.png",
 })
 
+minetest.register_craft({
+	output = "terranova:heating_element",
+	recipe = {
+		{"terranova:copper_coil", "terranova:copper_coil", "terranova:copper_coil"}
+	}
+})
+
+minetest.register_craftitem("terranova:heating_element", {
+	description = "Heating Element",
+	inventory_image = "t.heating_element.png",
+})
+
 
 
 minetest.register_craft({
