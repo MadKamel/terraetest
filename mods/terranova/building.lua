@@ -34,7 +34,14 @@ minetest.register_craft({
 
 minetest.register_node("terranova:storage_container", {
 	description = "Storage Container",
-	tiles = {"ov.conveyor_input.png^t.storage_container_end.png", "t.storage_container_side.png", "t.storage_container_side.png", "t.storage_container_side.png"},
+	tiles = {
+		"t.storage_container_side.png",
+		"t.storage_container_side.png",
+		"t.storage_container_end.png^ov.conveyor_input.png",
+		"t.storage_container_end.png^ov.conveyor_input.png",
+		"t.storage_container_side.png",
+		"t.storage_container_side.png"
+	},
 	groups = {foundation = 1},
 	paramtype = "light",
 	paramtype2 = "facedir",
