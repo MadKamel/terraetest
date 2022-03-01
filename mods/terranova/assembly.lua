@@ -434,3 +434,32 @@ minetest.register_craftitem("terranova:circuit_board", {
 	description = "Circuit Board",
 	inventory_image = "t.circuit_board.png",
 })
+
+
+
+minetest.register_node("terranova:biomass_furnace", {
+	description = "Biomass-Powered Furnace",
+	tiles = {
+		"t.storage_container_side.png",
+		"t.storage_container_side.png",
+		"t.storage_container_end.png^ov.conveyor_input.png",
+		"t.storage_container_end.png^ov.conveyor_input.png",
+		"t.storage_container_side.png",
+		"t.storage_container_side.png"
+	},
+	groups = {foundation = 1},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	is_ground_content = true,
+	legacy_facedir_simple = true,
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		local inv = meta:get_inventory()
+		inv:set_size("input", 1*1)
+		inv:set_size("output", 1*2)
+		inv:set_size("fuel", 1*1)
+		meta:set_string("infotext", "Biomass Smelter")
+		local fs_content = "formspec_version[5]size[10.5,5]list[current_player;main;0.4,2.4;8,2;0]list[context;input;2.9,0.8;1,1;0]list[context;output;5.4,0.8;2,1;0]list[context;fuel;0.9,0.8;1,1;0]label[0.1,0.3;Biomass Smelter]label[3,2.1;Input]label[5.9,2.1;Outputs]label[0.8,2.1;Biomass]"
+		meta:set_string("formspec", fs_content)
+	end
+})

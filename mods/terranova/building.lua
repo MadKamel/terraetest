@@ -50,7 +50,7 @@ minetest.register_node("terranova:storage_container", {
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
-		inv:set_size("container", bin_column*bin_row)
+		inv:set_size("container", 8*1)
 		meta:set_string("infotext", "Storage Container")
 		local fs_content = "size[8,7;]" ..
 			"list[context;container;0,0.3;10,1;]" ..

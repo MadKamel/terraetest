@@ -75,8 +75,6 @@ minetest.register_on_newplayer(give_chisel)
 
 minetest.register_on_joinplayer(
 	function(player)
-		player:get_inventory():set_width("main", 16)
-		player:get_inventory():set_size("main", 16)
-		player:hud_set_hotbar_itemcount(8)
+		player:hud_set_hotbar_itemcount(4)
 	end
 )
