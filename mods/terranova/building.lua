@@ -47,6 +47,18 @@ minetest.register_node("terranova:storage_container", {
 	paramtype2 = "facedir",
 	is_ground_content = true,
 	legacy_facedir_simple = true,
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		local inv = meta:get_inventory()
+		inv:set_size("container", bin_column*bin_row)
+		meta:set_string("infotext", "Storage Container")
+		local fs_content = "size[8,7;]" ..
+			"list[context;container;0,0.3;10,1;]" ..
+			"list[current_player;main;0,2.85;8,1;]" ..
+			"list[current_player;main;0,4.08;8,3;8]" ..
+			"listring[context;container]"
+		meta:set_string("formspec", fs_content)
+	end
 })
 
 minetest.register_craft({
