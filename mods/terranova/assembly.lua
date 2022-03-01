@@ -470,6 +470,113 @@ local allow_metadata_inventory_move = function(pos, from_list, from_index, to_li
 	return allow_metadata_inventory_put(pos, to_list, to_index, stack, player)
 end
 
+local function allow_metadata_inventory_take(pos, listname, index, stack, player)
+	return stack:get_count()
+end
+
+local swap_node = function(pos, name)
+	local node = minetest.get_node(pos)
+	if node.name == name then
+		return
+	else
+		node.name = name
+		minetest.swap_node(pos, node)
+	end
+end
+
+local furnace_node_timer = function(pos, elapsed)
+	local meta = minetest.get_meta(pos)
+	local inv = meta:get_inventory()
+	local input_list, fuel_list
+	local output_full
+
+	local fuel_time = meta:get_float("fuel_time") or 0
+	local input_time = meta:get_float("input_time") or 0
+	local fuel_totaltime = meta:get_float("fuel_totaltime") or 0
+
+	local timer_elapsed = meta:get_int("timer_elapsed") or 0
+	meta:set_int("timer_elapsed", timer_elapsed + 1)
+
+	local cookable, cooked
+	local fuel
+
+	local update = true
+	while elapsed > 0 and update do
+		update = false
+		input_list = inv:get_list("input")
+		fuel_list = inv:get_list("fuel")
+
+		local aftercooked
+		cooked, aftercooked = minetest.get_craft_result({method = "cooking", width = 1, items = input_list})
+		cookable = cooked.time ~= 0
+
+		local el = math.min(elapsed, fuel_total_time - fuel_time)
+		if cookable then
+			el = math.min(el, cooked.time - input_time)
+		end
+
+		if fuel_time < fuel_total_time then
+			fuel_time = fuel_time + el
+			if cookable then
+				input_time = input_time + el
+				if input_time >= cooked.time then --Cooking over, add the resulting item.
+					if inv:room_for_item("output", cooked.item) then
+						inv:add_item("output", cooked.item)
+						inv:set_stack("input", 1, aftercooked.items[1])
+						input_time = input_time - cooked.time
+						update = true
+					else
+						output_full = true
+					end
+				else
+					update = true
+				end
+			end
+		else
+			if cookable then --The item is cookable, but it can't be cooked at the moment (typically no fuel*)
+				local after_fuel
+				fuel, after_fuel = minetest.get_craft_result({method = "fuel", width = 1, items = fuel_list})
+
+				if fuel.time == 0 then
+					fuel_total_time = 0
+					input_time = 0
+				else
+					local is_fuel = minetest.get_craft_result({method = "fuel", width = 1, items = {after_fuel.items[1]:to_string()}})
+					if is_fuel.time = 0 then
+						table.insert(fuel.replacements, afterfuel.items[1]) --Enable fuel to return items when used up.
+						inv:set_stack("fuel", 1, "")
+					else
+						inv:set_stack("fuel", 1, afterfuel.items[1])
+					end
+					local replacements = fuel.replacements
+					if replacements[1] then
+						local leftover = inv:add_item("output", replacements[1])
+						if not leftover:is_empty() then
+							local above = vector.new(pos.x, pos.y + 1, pos.z)
+							local drop_pos = minetest.find_node_near(above, 1, {"air"}) or above
+							minetest.item_drop(replacements[1], nil, drop_pos) --This code could be used later on to enable outputting directly onto conveyors.
+						end
+					end
+					update = true
+					fuel_total_time = fuel.time + (fuel_total_time - fuel_time)
+				end
+			else --There's nothing to cook, so just forget about it.
+				fuel_total_time = 0
+				input_time = 0
+			end
+			fuel_time = 0
+		end
+
+		elapsed = elapsed - el
+	end
+	if fuel and fuel_total_time > fuel.time then
+		fuel_total_time = fuel.time
+	end
+	if input_list and input_list[1]:is_empty() then
+		input_time = 0
+	end --TODO: make it so that an active furnace swaps to another node.
+end
+
 minetest.register_node("terranova:biomass_furnace", {
 	description = "Biomass-Powered Furnace",
 	tiles = {
@@ -496,3 +603,7 @@ minetest.register_node("terranova:biomass_furnace", {
 		meta:set_string("formspec", fs_content)
 	end
 })
+
+-- * The reason for the asterisk footnote here is because sometimes some dumb issue happens that nobody expected. This happens all the time.
+--	Welcome to programming; few things go as you expect. In this case, probably something really weird happened with the inventory movement
+--	restrictions, causing some non-fuel item to be placed in the fuel stack. This is very much improbable, but hey- computers are dumb.
