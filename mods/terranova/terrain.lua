@@ -4,10 +4,18 @@ minetest.register_node("terranova:soil", {
 	groups = {terrain_soft = 1}
 })
 
+minetest.register_node("terranova:mossy_soil", {
+	description = "Mossy Soil",
+	tiles = {"t.soil.png"},
+	groups = {terrain_soft = 1},
+	drop = "terranova:soil"
+})
+
 minetest.register_node("terranova:permafrost", {
 	description = "Permafrost",
 	tiles = {"t.permafrost.png"},
-	groups = {terrain_hard = 1}
+	groups = {terrain_hard = 1},
+	drop = "terranova:soil"
 })
 
 minetest.register_node("terranova:crater", {
@@ -78,13 +86,26 @@ minetest.register_biome({
 	humidity_point = 50
 })
 
+minetest.register_biome({
+	name = "mossy_marsh",
+	node_top = "terranova:mossy_soil",
+	depth_top = 1,
+	node_filler = "terranova:permafrost",
+	depth_filler = 16,
+	node_stone = "terranova:limestone",
+	y_min = 31000,
+	y_max = -6,
+	heat_point = 0,
+	humidity_point = 50
+})
+
 
 
 minetest.register_decoration({
 	deco_type = "schematic",
 	sidelen = 16,
-	biomes = {"soil_field"},
-	place_on = "terranova:soil",
+	biomes = {"soil_field", "mossy_marsh"},
+	place_on = "group:terrain_soft",
 	fill_ratio = 0.005,
 	schematic = "schematics/moss_bush.mts",
 	flags = "place_center_z, place_center_x",
@@ -92,10 +113,21 @@ minetest.register_decoration({
 })
 
 minetest.register_decoration({
+	deco_type = "schematic",
+	sidelen = 16,
+	biomes = {"soil_field", "mossy_marsh"},
+	place_on = "group:terrain_soft",
+	fill_ratio = 0.001,
+	schematic = "schematics/moss_spike.mts",
+	flags = "place_center_z, place_center_x",
+	place_offset_y = 1
+})
+
+minetest.register_decoration({
 	deco_type = "simple",
 	sidelen = 4,
-	biomes = {"soil_field"},
-	place_on = "terranova:soil",
+	biomes = {"soil_field", "mossy_marsh"},
+	place_on = "group:terrain_soft",
 	fill_ratio = 0.2,
 	decoration = "terranova:fern",
 	flags = "place_center_z, place_center_x"
@@ -106,8 +138,8 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "schematic",
 	sidelen = 16,
-	biomes = {"soil_field"},
-	place_on = "terranova:soil",
+	biomes = {"soil_field", "mossy_marsh"},
+	place_on = "group:terrain_soft",
 	fill_ratio = 0.0005,
 	schematic = "schematics/limestone_deposit.mts",
 	flags = "force_placement, place_center_z, place_center_x"
@@ -116,8 +148,8 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "schematic",
 	sidelen = 16,
-	biomes = {"soil_field"},
-	place_on = "terranova:soil",
+	biomes = {"soil_field", "mossy_marsh"},
+	place_on = "group:terrain_soft",
 	fill_ratio = 0.00025,
 	schematic = "schematics/galena_deposit.mts",
 	flags = "force_placement, place_center_z, place_center_x"
@@ -126,8 +158,8 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "schematic",
 	sidelen = 16,
-	biomes = {"soil_field"},
-	place_on = "terranova:soil",
+	biomes = {"soil_field", "mossy_marsh"},
+	place_on = "group:terrain_soft",
 	fill_ratio = 0.001,
 	schematic = "schematics/magnetite_deposit.mts",
 	flags = "force_placement, place_center_z, place_center_x"
@@ -136,8 +168,8 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "schematic",
 	sidelen = 16,
-	biomes = {"soil_field"},
-	place_on = "terranova:soil",
+	biomes = {"soil_field", "mossy_marsh"},
+	place_on = "group:terrain_soft",
 	fill_ratio = 0.0005,
 	schematic = "schematics/chalcocite_deposit.mts",
 	flags = "force_placement, place_center_z, place_center_x"

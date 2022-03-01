@@ -356,3 +356,81 @@ minetest.register_craftitem("terranova:motor", {
 	description = "Motor",
 	inventory_image = "t.motor.png",
 })
+
+
+
+
+minetest.register_craft({
+	output = "terranova:oil_canister",
+	recipe = {
+		{"terranova:moss", "terranova:moss", "terranova:moss"},
+		{"terranova:moss", "terranova:empty_canister", "terranova:moss"},
+		{"terranova:moss", "terranova:moss", "terranova:moss"}
+	}
+})
+
+minetest.register_craft({
+	output = "terranova:empty_canister 3",
+	recipe = {
+		{"terranova:iron_plate", "terranova:iron_plate", "terranova:fabric"},
+		{"terranova:iron_plate", "", "terranova:iron_plate"},
+		{"terranova:lead_plate", "terranova:lead_plate", "terranova:lead_plate"}
+	}
+})
+
+minetest.register_craftitem("terranova:empty_canister", {
+	description = "Empty Canister",
+	inventory_image = "t.empty_canister.png",
+})
+
+
+minetest.register_craftitem("terranova:water_canister", {
+	description = "Water Canister",
+	inventory_image = "t.water_canister.png",
+})
+
+
+minetest.register_craftitem("terranova:oil_canister", {
+	description = "Oil Canister",
+	inventory_image = "t.oil_canister.png",
+})
+
+minetest.register_craft({
+	output = "terranova:plastic 2",
+	recipe = {
+		{"terranova:oil_canister"}
+	}
+})
+
+minetest.register_craftitem("terranova:plastic", {
+	description = "Plastic",
+	inventory_image = "t.plastic.png",
+})
+
+minetest.register_craft({
+	output = "terranova:capacitor 2",
+	recipe = {
+		{"terranova:lead_plate", "terranova:lead_plate", "terranova:lead_plate"},
+		{"terranova:oil_canister", "terranova:oil_canister", "terranova:oil_canister"},
+		{"terranova:lead_rod", "terranova:copper_coil", "terranova:lead_rod"}
+	}
+})
+
+minetest.register_craftitem("terranova:capacitor", {
+	description = "Lead Capacitor",
+	inventory_image = "t.lead_capacitor.png",
+})
+
+minetest.register_craft({
+	output = "terranova:circuit_board",
+	recipe = {
+		{"terranova:capacitor", "terranova:copper_coil", "terranova:copper_coil"},
+		{"terranova:capacitor", "terranova:copper_coil", "terranova:copper_coil"},
+		{"terranova:plastic", "terranova:plastic", "terranova:plastic"}
+	}
+})
+
+minetest.register_craftitem("terranova:circuit_board", {
+	description = "Circuit Board",
+	inventory_image = "t.circuit_board.png",
+})

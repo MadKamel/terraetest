@@ -6,6 +6,14 @@ minetest.register_node("terranova:moss", {
 	groups = {biomass = 1, grabbable_resource = 1},
 })
 
+minetest.register_node("terranova:heavy_moss", {
+	description = "Heavy Moss",
+	tiles = {"t.moss.png"},
+	paramtype = "light",
+	groups = {biomass = 1, grabbable_resource = 1},
+	drop = "terranova:moss 3"
+})
+
 minetest.register_node("terranova:fern", {
 	description = "Fern",
 	tiles = {"t.fern.png"},
