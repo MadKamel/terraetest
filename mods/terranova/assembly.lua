@@ -437,6 +437,39 @@ minetest.register_craftitem("terranova:circuit_board", {
 
 
 
+local can_dig = function(pos, player)
+	local meta = minetest.get_meta(pos)
+	local inv = meta:get_inventory()
+	if inv:is_empty("fuel") and inv:is_empty("output") and inv:is_empty("input") then
+		return true
+	else
+		return false
+end
+
+local allow_metadata_inventory_put = function(pos, listname, index, stack, player)
+	local meta = minetest.get_meta(pos)
+	local inv = meta:get_inventory()
+	if listname == "fuel" then
+		-- TODO: reject non-biomass items.
+		if minetest.get_craft_result({method = "fuel", width = 1, items = {stack}}).time ~= 0 then
+			return stack:get_count()
+		else
+			return 0
+		end
+	elseif listname == "input" then
+		return stack:get_count() -- TODO: If item is not group:smelter then reject it
+	elseif listname == "output" then
+		return 0
+	end
+end
+
+local allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
+	local meta = minetest.get_meta(pos)
+	local inv = meta:get_inventory()
+	local stack = inv:get_stack(from_list, from_index)
+	return allow_metadata_inventory_put(pos, to_list, to_index, stack, player)
+end
+
 minetest.register_node("terranova:biomass_furnace", {
 	description = "Biomass-Powered Furnace",
 	tiles = {
