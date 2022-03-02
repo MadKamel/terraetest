@@ -5,17 +5,6 @@ minetest.register_craftitem("terranova:fabric", {
 	groups = {biomass = 1}
 })
 
-minetest.register_craft({
-	type = "fuel",
-	recipe = "terranova:fabric",
-	burntime = 3.5
-})
-
-minetest.register_craft({
-	output = "terranova:fabric",
-	recipe = {{"terranova:moss", "terranova:moss", "terranova:moss"}}
-})
-
 
 
 minetest.register_craftitem("terranova:limestone_lump", {
@@ -54,26 +43,6 @@ minetest.register_craftitem("terranova:ivory_lump", {
 
 
 
-minetest.register_craft({
-	type = "cooking",
-	output = "terranova:iron_ingot",
-	recipe = "terranova:magnetite_lump"
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "terranova:copper_ingot",
-	recipe = "terranova:chalcocite_lump"
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "terranova:lead_ingot",
-	recipe = "terranova:galena_lump"
-})
-
-
-
 minetest.register_craftitem("terranova:iron_ingot", {
 	description = "Iron Ingot",
 	inventory_image = "t.iron_ingot.png"
@@ -87,38 +56,6 @@ minetest.register_craftitem("terranova:copper_ingot", {
 minetest.register_craftitem("terranova:lead_ingot", {
 	description = "Lead Ingot",
 	inventory_image = "t.lead_ingot.png"
-})
-
-
-
-minetest.register_craft({
-	output = "terranova:iron_rod 2",
-	recipe = {
-		{"terranova:iron_ingot"}
-	}
-})
-
-minetest.register_craft({
-	output = "terranova:iron_plate 3",
-	recipe = {
-		{"terranova:iron_ingot", "terranova:iron_ingot"}
-	}
-})
-
-minetest.register_craft({
-	output = "terranova:screw 4",
-	recipe = {
-		{"terranova:iron_rod"}
-	}
-})
-
-minetest.register_craft({
-	output = "terranova:bolted_iron_plate 2",
-	recipe = {
-		{"", "terranova:screw", ""},
-		{"terranova:screw", "terranova:iron_plate", "terranova:screw"},
-		{"", "terranova:screw", ""}
-	}
 })
 
 
@@ -145,15 +82,6 @@ minetest.register_craftitem("terranova:bolted_iron_plate", {
 })
 
 
-
-minetest.register_craft({
-	output = "terranova:modular_iron_frame",
-	recipe = {
-		{"", "terranova:iron_rod", ""},
-		{"terranova:iron_rod", "terranova:bolted_iron_plate", "terranova:iron_rod"},
-		{"", "terranova:iron_rod", ""}
-	}
-})
 
 minetest.register_node("terranova:modular_iron_frame", {
 	description = "Modular Iron Frame",
@@ -182,23 +110,9 @@ minetest.register_node("terranova:modular_iron_frame", {
 
 
 
-minetest.register_craft({
-	output = "terranova:copper_coil",
-	recipe = {
-		{"terranova:copper_ingot"}
-	}
-})
-
 minetest.register_craftitem("terranova:copper_coil", {
 	description = "Copper Coil",
 	inventory_image = "t.copper_coil.png",
-})
-
-minetest.register_craft({
-	output = "terranova:heating_element",
-	recipe = {
-		{"terranova:copper_coil", "terranova:copper_coil", "terranova:copper_coil"}
-	}
 })
 
 minetest.register_craftitem("terranova:heating_element", {
@@ -207,38 +121,6 @@ minetest.register_craftitem("terranova:heating_element", {
 })
 
 
-
-minetest.register_craft({
-	output = "terranova:lead_rod 2",
-	recipe = {
-		{"terranova:lead_ingot"}
-	}
-})
-
-minetest.register_craft({
-	output = "terranova:lead_plate 3",
-	recipe = {
-		{"terranova:lead_ingot", "terranova:lead_ingot"}
-	}
-})
-
-minetest.register_craft({
-	output = "terranova:lead_pipe",
-	recipe = {
-		{"terranova:lead_plate", "terranova:lead_plate"},
-		{"terranova:lead_plate", "terranova:lead_plate"},
-		{"terranova:lead_plate", "terranova:lead_plate"}
-	}
-})
-
-minetest.register_craft({
-	output = "terranova:rivet",
-	recipe = {
-		{"terranova:screw", "terranova:screw", "terranova:screw"},
-		{"terranova:screw", "terranova:lead_rod", "terranova:screw"},
-		{"terranova:screw", "terranova:screw", "terranova:screw"}
-	}
-})
 
 minetest.register_craftitem("terranova:lead_rod", {
 	description = "Lead Rod",
@@ -262,15 +144,6 @@ minetest.register_craftitem("terranova:rivet", {
 })
 
 
-
-minetest.register_craft({
-	output = "terranova:modular_lead_frame",
-	recipe = {
-		{"terranova:rivet", "terranova:lead_pipe", "terranova:rivet"},
-		{"terranova:lead_pipe", "terranova:modular_iron_frame", "terranova:lead_pipe"},
-		{"terranova:rivet", "terranova:lead_pipe", "terranova:rivet"}
-	}
-})
 
 minetest.register_node("terranova:modular_lead_frame", {
 	description = "Modular Lead Frame",
@@ -323,41 +196,14 @@ minetest.register_node("terranova:modular_lead_frame", {
 
 
 
-minetest.register_craft({
-	output = "terranova:stator",
-	recipe = {
-		{"terranova:copper_coil", "terranova:copper_coil", "terranova:copper_coil"},
-		{"terranova:copper_coil", "terranova:lead_pipe", "terranova:copper_coil"},
-		{"terranova:copper_coil", "terranova:copper_coil", "terranova:copper_coil"}
-	}
-})
-
 minetest.register_craftitem("terranova:stator", {
 	description = "Stator",
 	inventory_image = "t.stator.png",
 })
 
-minetest.register_craft({
-	output = "terranova:rotor",
-	recipe = {
-		{"", "terranova:iron_rod", ""},
-		{"terranova:copper_coil", "terranova:iron_rod", "terranova:copper_coil"},
-		{"", "terranova:iron_rod", ""}
-	}
-})
-
 minetest.register_craftitem("terranova:rotor", {
 	description = "Rotor",
 	inventory_image = "t.rotor.png",
-})
-
-minetest.register_craft({
-	output = "terranova:motor",
-	recipe = {
-		{"terranova:bolted_iron_plate", "terranova:bolted_iron_plate", "terranova:bolted_iron_plate"},
-		{"terranova:rotor", "terranova:modular_iron_frame", "terranova:stator"},
-		{"terranova:iron_rod", "terranova:bolted_iron_plate", "terranova:iron_rod"}
-	}
 })
 
 minetest.register_craftitem("terranova:motor", {
@@ -366,25 +212,6 @@ minetest.register_craftitem("terranova:motor", {
 })
 
 
-
-
-minetest.register_craft({
-	output = "terranova:oil_canister",
-	recipe = {
-		{"terranova:moss", "terranova:moss", "terranova:moss"},
-		{"terranova:moss", "terranova:empty_canister", "terranova:moss"},
-		{"terranova:moss", "terranova:moss", "terranova:moss"}
-	}
-})
-
-minetest.register_craft({
-	output = "terranova:empty_canister 3",
-	recipe = {
-		{"terranova:iron_plate", "terranova:iron_plate", "terranova:fabric"},
-		{"terranova:iron_plate", "", "terranova:iron_plate"},
-		{"terranova:lead_plate", "terranova:lead_plate", "terranova:lead_plate"}
-	}
-})
 
 minetest.register_craftitem("terranova:empty_canister", {
 	description = "Empty Canister",
@@ -403,39 +230,14 @@ minetest.register_craftitem("terranova:oil_canister", {
 	inventory_image = "t.oil_canister.png",
 })
 
-minetest.register_craft({
-	output = "terranova:plastic 2",
-	recipe = {
-		{"terranova:oil_canister"}
-	}
-})
-
 minetest.register_craftitem("terranova:plastic", {
 	description = "Plastic",
 	inventory_image = "t.plastic.png",
 })
 
-minetest.register_craft({
-	output = "terranova:capacitor 2",
-	recipe = {
-		{"terranova:lead_plate", "terranova:lead_plate", "terranova:lead_plate"},
-		{"terranova:oil_canister", "terranova:oil_canister", "terranova:oil_canister"},
-		{"terranova:lead_rod", "terranova:copper_coil", "terranova:lead_rod"}
-	}
-})
-
 minetest.register_craftitem("terranova:capacitor", {
 	description = "Lead Capacitor",
 	inventory_image = "t.lead_capacitor.png",
-})
-
-minetest.register_craft({
-	output = "terranova:circuit_board",
-	recipe = {
-		{"terranova:capacitor", "terranova:copper_coil", "terranova:copper_coil"},
-		{"terranova:capacitor", "terranova:copper_coil", "terranova:copper_coil"},
-		{"terranova:plastic", "terranova:plastic", "terranova:plastic"}
-	}
 })
 
 minetest.register_craftitem("terranova:circuit_board", {
@@ -447,12 +249,6 @@ minetest.register_craftitem("terranova:lead_battery", {
 	description = "Lead-Plate Power Cell",
 	inventory_image = "t.lead_battery.png",
 	groups = {battery = 1}
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "terranova:lead_battery",
-	burntime = 20
 })
 
 
