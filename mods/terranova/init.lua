@@ -4,6 +4,7 @@ dofile(modpath.."/assembly.lua")
 dofile(modpath.."/building.lua")
 dofile(modpath.."/flora.lua")
 dofile(modpath.."/nuclear.lua")
+dofile(modpath.."/crafting.lua")
 
 minetest.register_item(":", {
 	type = "none",
