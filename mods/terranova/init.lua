@@ -1,10 +1,12 @@
 local modpath = minetest.get_modpath("terranova")
+dofile(modpath.."/utils.lua")
+dofile(modpath.."/milestones.lua")
+dofile(modpath.."/crafting.lua")
 dofile(modpath.."/terrain.lua")
 dofile(modpath.."/assembly.lua")
 dofile(modpath.."/building.lua")
 dofile(modpath.."/flora.lua")
 dofile(modpath.."/nuclear.lua")
-dofile(modpath.."/crafting.lua")
 
 minetest.register_item(":", {
 	type = "none",
