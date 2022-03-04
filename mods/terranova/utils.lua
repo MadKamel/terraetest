@@ -44,13 +44,14 @@ utils.get_player_inventory = function(player)
 	outlist = {}
 	inv_len = inv:get_size()
 	for i, value in pairs(table) do
-		if inv[i]:is_empty()
+		current_stack = inv[i]
+		if current_stack:is_empty()
 			--pass
 		else
-			if utils.has_item(outlist, inv[i]:get_name()) then --Needs work.
-				--pass
+			if utils.has_item(outlist, current_stack:get_name()) then --Needs work.
+				outlist[current_stack:get_name()] = outlist[current_stack:get_name()] + current_stack:get_count()
 			else
-				--pass
+				outlist[current_stack:get_name()] = current_stack:get_count()
 			end
 		end
 	end
