@@ -1,5 +1,8 @@
 minetest.register_node("terranova:craft_bench", {
-	description = "Workshop"
+	description = "Workshop",
+	tiles = {"t.workbench.png"},
+	drawtype = "nodebox",
+	on_construct = function()
 })
 
 
