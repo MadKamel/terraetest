@@ -1,10 +1,10 @@
 minetest.register_node("terranova:craft_bench", {
 	description = "Workshop"
-}
+})
 
 
 
-terranova.register_craft({
+utils.register_craft({
 	output = "iron_ingot",
 	input = {"magnetite_lump"},
 	type = {"craftbench", "smelter"},
@@ -14,7 +14,7 @@ terranova.register_craft({
 	name = "Iron Ingot"
 })
 
-terranova.register_craft({
+utils.register_craft({
 	output = "iron_rod 2",
 	input = {"iron_ingot"},
 	type = {"craftbench", "constructor"},
@@ -24,7 +24,7 @@ terranova.register_craft({
 	name = "Iron Rod"
 })
 
-terranova.register_craft({
+utils.register_craft({
 	output = "iron_plate 3",
 	input = {"iron_ingot 2"},
 	type = {"craftbench", "constructor"},
@@ -32,4 +32,15 @@ terranova.register_craft({
 	alternate = false,
 	time = 1,
 	name = "Iron Plate"
+})
+
+minetest.register_craft({
+	recipe = "group:biomass",
+	type = "fuel"
+})
+
+minetest.register_craft({
+	output = "terranova:iron_ingot",
+	recipe = "terranova:magnetite",
+	type = "cooking"
 })

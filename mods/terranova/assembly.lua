@@ -262,6 +262,7 @@ local can_dig = function(pos, player)
 		return true
 	else
 		return false
+	end
 end
 
 local allow_metadata_inventory_put = function(pos, listname, index, stack, player)
@@ -360,7 +361,7 @@ local furnace_node_timer = function(pos, elapsed)
 					input_time = 0
 				else
 					local is_fuel = minetest.get_craft_result({method = "fuel", width = 1, items = {after_fuel.items[1]:to_string()}})
-					if is_fuel.time = 0 then
+					if is_fuel.time == 0 then
 						table.insert(fuel.replacements, afterfuel.items[1]) --Enable fuel to return items when used up.
 						inv:set_stack("fuel", 1, "")
 					else

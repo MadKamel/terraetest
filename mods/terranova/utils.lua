@@ -45,8 +45,8 @@ utils.get_player_inventory = function(player)
 	inv_len = inv:get_size()
 	for i, value in pairs(table) do
 		current_stack = inv[i]
-		if current_stack:is_empty()
-			--pass
+		if current_stack:is_empty() then
+			-- pass
 		else
 			if utils.has_item(outlist, current_stack:get_name()) then --Needs work.
 				outlist[current_stack:get_name()] = outlist[current_stack:get_name()] + current_stack:get_count()
@@ -59,9 +59,9 @@ utils.get_player_inventory = function(player)
 end
 
 utils.register_craft = function(output, data)
-	utils.crafts[get_table_size(terranova.crafts)] = data
+	utils.crafts[utils.get_table_size(utils.crafts)] = data
 end
 
 utils.register_milestone = function(number, data)
-	utils.milestone[number] = data
+	utils.milestones[number] = data
 end
