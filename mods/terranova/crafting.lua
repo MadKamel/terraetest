@@ -33,14 +33,3 @@ utils.register_craft({
 	time = 1,
 	name = "Iron Plate"
 })
-
-minetest.register_craft({
-	recipe = "group:biomass",
-	type = "fuel"
-})
-
-minetest.register_craft({
-	output = "terranova:iron_ingot",
-	recipe = "terranova:magnetite",
-	type = "cooking"
-})
